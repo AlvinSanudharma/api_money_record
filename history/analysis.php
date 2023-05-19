@@ -1,6 +1,8 @@
 <?php
 include "../connection.php";
 
+// TODO: Next ganti pakai query parameter dengan method get, jangan pakai post 
+
 $id_user = $_POST['id_user'];
 $today = new DateTime($_POST['today']);
 $this_month = $today->format('Y-m');
@@ -22,11 +24,11 @@ $week = array(
     $day7,
 );
 
-$weekly = array(0,0,0,0,0,0,0);
+$weekly = array(0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 $month_income = 0.0;
 $month_outcome = 0.0;
 
-$sql_month = "SELECT * FROM history
+$sql_month = "SELECT * FROM histories
     WHERE
     id_user='$id_user' AND date LIKE '%$this_month%'
     ORDER BY date DESC
@@ -46,7 +48,7 @@ if ($result_month->num_rows > 0) {
     }
 }
 
-$sql_week = "SELECT * FROM history
+$sql_week = "SELECT * FROM histories
     WHERE
     id_user='$id_user' AND date >= '%$day1%'
     ORDER BY date DESC
