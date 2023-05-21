@@ -22,7 +22,7 @@ if ($result_check->num_rows > 0) {
         'message' => 'date'
     ));
 } else {
-    $sql = "INSERT INTO history
+    $sql = "INSERT INTO histories
             SET
             id_user = '$id_user',
             type = '$type',

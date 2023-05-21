@@ -4,6 +4,7 @@ include '../connection.php';
 
 $name = $_POST['name'];
 $email = $_POST['email'];
+// TODO: Nanti ganti, gunakan fungsi password_hash
 $password = md5($_POST['password']);
 $created_at = $_POST['created_at'];
 $updated_at = $_POST['updated_at'];

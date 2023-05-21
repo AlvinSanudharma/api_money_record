@@ -1,8 +1,6 @@
 <?php
 include "../connection.php";
 
-// TODO: Next ganti pakai query parameter dengan method get, jangan pakai post 
-
 $id_user = $_POST['id_user'];
 $today = new DateTime($_POST['today']);
 $this_month = $today->format('Y-m');
@@ -63,7 +61,7 @@ if ($result_week->num_rows > 0) {
         if ($type == "Pengeluaran") {
             for ($i=0; $i < count($week); $i++) { 
                 if ($date == $week[$i]) {
-                    $week[$i]= floatval($row_week["total"]);
+                    $weekly[$i]= floatval($row_week["total"]);
                 }
             }
         }
