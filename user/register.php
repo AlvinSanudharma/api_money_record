@@ -4,14 +4,15 @@ include '../connection.php';
 
 $name = $_POST['name'];
 $email = $_POST['email'];
-// TODO: Nanti ganti, gunakan fungsi password_hash
-$password = md5($_POST['password']);
+$password = $_POST['password'];
 $created_at = $_POST['created_at'];
 $updated_at = $_POST['updated_at'];
 
 $sql_check = "SELECT * FROM users WHERE email = '$email'";
 
 $result_check = $connect->query($sql_check);
+
+$password_hashed = password_hash($password, PASSWORD_DEFAULT);
 
 if ($result_check->num_rows > 0) {
     echo json_encode(
@@ -25,7 +26,7 @@ if ($result_check->num_rows > 0) {
             SET 
             name = '$name',
             email = '$email',
-            password = '$password',
+            password = '$password_hashed',
             created_at = '$created_at',
             updated_at = '$updated_at'
            ";
